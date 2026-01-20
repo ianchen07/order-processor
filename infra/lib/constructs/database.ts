@@ -33,6 +33,9 @@ export class DatabaseConstruct extends Construct {
       vpc,
       vpcSubnets: { subnetType: ec2.SubnetType.PRIVATE_ISOLATED },
       engine: rds.DatabaseInstanceEngine.postgres({ version: rds.PostgresEngineVersion.VER_15 }),
+
+      databaseName: "appdb",
+      
       credentials: rds.Credentials.fromSecret(this.secret),
       securityGroups: [dbSg],
       parameterGroup: paramGroup,
