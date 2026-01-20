@@ -6,6 +6,11 @@ export interface NetworkConstructProps {
   config: DevConfig["network"];
 }
 
+/**
+ * NOTE:
+ * We deliberately keep subnet cidrMask fixed at /24 to avoid replacing subnets
+ * in an existing dev stack. Changing subnet CIDR allocations is a destructive change.
+ */
 export class NetworkConstruct extends Construct {
   readonly vpc: ec2.Vpc;
 
@@ -17,9 +22,9 @@ export class NetworkConstruct extends Construct {
       maxAzs: props.config.maxAzs,
       natGateways: props.config.natGateways,
       subnetConfiguration: [
-        { name: "public", subnetType: ec2.SubnetType.PUBLIC },
-        { name: "app", subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS },
-        { name: "db", subnetType: ec2.SubnetType.PRIVATE_ISOLATED }
+        { name: "public", subnetType: ec2.SubnetType.PUBLIC, cidrMask: 24 },
+        { name: "app", subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS, cidrMask: 24 },
+        { name: "db", subnetType: ec2.SubnetType.PRIVATE_ISOLATED, cidrMask: 24 }
       ]
     });
   }
