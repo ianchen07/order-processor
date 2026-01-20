@@ -37,7 +37,8 @@ export class DatabaseConstruct extends Construct {
       securityGroups: [dbSg],
       parameterGroup: paramGroup,
       publiclyAccessible: false,
-
+      
+      databaseName: "appdb",
       // demo-friendly
       deletionProtection: false,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
