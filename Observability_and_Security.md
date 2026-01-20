@@ -87,6 +87,8 @@ This document outlines the monitoring, logging, and key security considerations 
   - No disaster recovery or cross-region failover
 - **Basic health checks**
   - Health endpoint checks liveness only, not dependency readiness
+- **No blue-green deployment**
+  - Deployments use rolling update strategy without blue-green deployment, increasing risk of service disruption during updates
 
 ---
 
