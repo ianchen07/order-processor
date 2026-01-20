@@ -42,8 +42,13 @@ jobs:
         working-directory: infra
         run: npx cdk synth
 
-      # NOTE:
-      # cdk diff without AWS credentials will still show template-level changes.
+      # for running cdk diff
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-southeast-2
+          role-to-assume: arn:aws:iam::939503809934:role/cicd-deploy-role
+
       - name: CDK diff (no deploy)
         working-directory: infra
         run: npx cdk diff
