@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# AWS CDK
+cdk.out/
+
+# Environment / secrets
+.env
+.env.*
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

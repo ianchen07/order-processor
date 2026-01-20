@@ -1,0 +1,14 @@
+{
+  "name": "order-processor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/worker.js",
+    "migrate": "node src/migrate.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.540.0",
+    "pg": "^8.11.3"
+  }
+}
