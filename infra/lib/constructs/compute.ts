@@ -85,7 +85,7 @@ export class ComputeConstruct extends Construct {
         // DB connection (user/db name are demo defaults; password is injected from Secrets Manager)
         DB_HOST: props.dbHost,
         DB_USER: "app",
-        DB_NAME: "appdb",
+        DB_NAME: "postgres",
         DB_PORT: "5432",
 
         // Health endpoint port (worker listens here for ALB target group health checks)
