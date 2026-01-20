@@ -1,6 +1,6 @@
 # CI/CD Strategy (GitHub Actions) — Flexischools Order Processing Demo
 
-This document describes a pragmatic CI/CD approach for a repository that contains **both application code** (ECS Fargate worker) and **infrastructure code** (AWS CDK / CloudFormation). It is designed to be easy to explain in an interview and is aligned with common practices in small–mid teams.
+This document describes a pragmatic CI/CD approach for a repository that contains **both application code** (ECS Fargate worker) and **infrastructure code** (AWS CDK / CloudFormation). It is designed to be easy to explain in an interview and is aligned with best practices in small–mid teams.
 
 ---
 

@@ -70,7 +70,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ap-southeast-2
-          role-to-assume: arn:aws:iam::111111111111:role/cicd-deploy-role
+          role-to-assume: arn:aws:iam::939503809934:role/cicd-deploy-role
 
       - name: Install dependencies
         working-directory: infra

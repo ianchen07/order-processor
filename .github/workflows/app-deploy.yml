@@ -23,12 +23,12 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ap-southeast-2
-          role-to-assume: arn:aws:iam::111111111111:role/cicd-deploy-role
+          role-to-assume: arn:aws:iam::939503809934:role/cicd-deploy-role
 
       - name: Deploy to dev
         run: |
           chmod +x .github/scripts/deploy_app.sh
-          .github/scripts/deploy_app.sh dev 111111111111 ap-southeast-2
+          .github/scripts/deploy_app.sh dev 939503809934 ap-southeast-2
 
   # =========================
   # QA (disabled for demo)
