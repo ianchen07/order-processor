@@ -23,6 +23,11 @@ REPO_URI=$(aws cloudformation describe-stacks \
   --query "Stacks[0].Outputs[?OutputKey=='RepoUri'].OutputValue" \
   --output text)
 
+if [ -z "$REPO_URI" ] || [ "$REPO_URI" = "None" ]; then
+  echo "ERROR: RepoUri output not found. Ensure infra stack '$STACK_NAME' is deployed and has RepoUri output."
+  exit 1
+fi
+
 CLUSTER=$(aws cloudformation describe-stacks \
   --stack-name "$STACK_NAME" \
   --query "Stacks[0].Outputs[?OutputKey=='ClusterName'].OutputValue" \
