@@ -43,12 +43,15 @@ async function main() {
 
   const sqs = new SQSClient({ region });
 
+  const sslEnabled = process.env.DB_SSL !== "false";
+
   const db = new Client({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: Number(process.env.DB_PORT || "5432")
+    port: Number(process.env.DB_PORT || "5432"),
+    ssl: sslEnabled ? { rejectUnauthorized: false } : undefined
   });
 
   await db.connect();
