@@ -10,8 +10,7 @@ permissions:
   contents: read
 
 env:
-  AWS_REGION: ap-southeast-2
-  IMAGE_NAME: order-processor
+  ECR_REPO_URI: 939503809934.dkr.ecr.ap-southeast-2.amazonaws.com/order-processor
 
 jobs:
   app-pr:
@@ -62,14 +61,14 @@ jobs:
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_OUTPUT
           docker build \
-            -t $IMAGE_NAME:$SHORT_SHA \
+            -t "${{ env.ECR_REPO_URI }}:$SHORT_SHA" \
             ./app
 
       # 7. Security scan (Trivy)
       - name: Trivy scan (container image)
         uses: aquasecurity/trivy-action@0.24.0
         with:
-          image-ref: "${{ env.IMAGE_NAME }}:${{ steps.build.outputs.SHORT_SHA }}"
+          image-ref: "${{ env.ECR_REPO_URI }}:${{ steps.build.outputs.SHORT_SHA }}"
           format: table
           exit-code: "0" # temporarily skip failing build on findings
           ignore-unfixed: true
